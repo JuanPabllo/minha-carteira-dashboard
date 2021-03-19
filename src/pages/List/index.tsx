@@ -7,6 +7,8 @@ import { Container, Content, Filters } from './styles';
 import gains from '../../repositories/gains';
 import expenses from '../../repositories/expenses';
 
+import formatCurrency from '../../utils/formatCurrency';
+
 interface iRoutesParams {
   match: {
     params: {
@@ -57,13 +59,12 @@ const List: React.FC<iRoutesParams> = ({ match }) => {
       return {
         id: String(Math.random() * data.length),
         description: item.description,
-        amountFormatted: item.amount,
+        amountFormatted: formatCurrency(Number(item.amount)),
         frequency: item.frequency,
         dateFormatted: item.date,
         tagColor: item.frequency === 'recorrente' ? '#4E41F0' : '#E44C4E',
       };
     });
-
     setData(response);
   }, [ListData, data.length]);
 
