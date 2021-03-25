@@ -1,4 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react';
+import { uuid } from 'uuidv4';
+
 import ContentHeader from '../../components/ContentHeader';
 import SelectInput from '../../components/SelectInput';
 import HistoryFinanceCard from '../../components/HistoryFinanceCard';
@@ -6,7 +8,7 @@ import { Container, Content, Filters } from './styles';
 
 import gains from '../../repositories/gains';
 import expenses from '../../repositories/expenses';
-
+import ListOfMonths from '../../utils/months';
 import formatCurrency from '../../utils/formatCurrency';
 import formatDate from '../../utils/formatDate';
 
@@ -22,7 +24,6 @@ interface IData {
   id: string;
   description: string;
   amountFormatted: string;
-  // type: string;
   frequency: string;
   dateFormatted: string;
   tagColor: string;
@@ -50,26 +51,34 @@ const List: React.FC<iRoutesParams> = ({ match }) => {
     return type === 'entry-balance' ? gains : expenses;
   }, [type]);
 
-  const months = [
-    { value: 1, label: 'Janeiro' },
-    { value: 2, label: 'Fevereiro' },
-    { value: 3, label: 'Março' },
-    { value: 4, label: 'Abril' },
-    { value: 5, label: 'Maio' },
-    { value: 6, label: 'Junho' },
-    { value: 7, label: 'Julho' },
-    { value: 8, label: 'Agosto' },
-    { value: 9, label: 'Setembro' },
-    { value: 10, label: 'Outubro' },
-    { value: 11, label: 'Novembro' },
-    { value: 12, label: 'Dezembro' },
-  ];
-  const years = [
-    { value: 2022, label: 2022 },
-    { value: 2021, label: 2021 },
-    { value: 2020, label: 2020 },
-    { value: 2019, label: 2019 },
-  ];
+  const years = useMemo(() => {
+    let uniqueYears: number[] = [];
+
+    ListData.forEach((item) => {
+      const date = new Date(item.date);
+      const year = date.getFullYear();
+
+      if (!uniqueYears.includes(year)) {
+        uniqueYears.push(year);
+      }
+    });
+
+    return uniqueYears.map((year) => {
+      return {
+        value: year,
+        label: year,
+      };
+    });
+  }, [ListData]);
+
+  const months = useMemo(() => {
+    return ListOfMonths.map((month, index) => {
+      return {
+        value: index + 1,
+        label: month,
+      };
+    });
+  }, []);
 
   useEffect(() => {
     const filteredDate = ListData.filter((item) => {
@@ -82,7 +91,7 @@ const List: React.FC<iRoutesParams> = ({ match }) => {
 
     const formattedData = filteredDate.map((item) => {
       return {
-        id: String(new Date().getTime()) + item.amount,
+        id: uuid(),
         description: item.description,
         amountFormatted: formatCurrency(Number(item.amount)),
         frequency: item.frequency,
