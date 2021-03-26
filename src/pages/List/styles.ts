@@ -20,7 +20,7 @@ export const Filters = styled.div`
 
     margin: 0 10px;
 
-    opacity: .4;
+    opacity: 0.4;
 
     transition: opacity 0.3s;
     &:hover {
