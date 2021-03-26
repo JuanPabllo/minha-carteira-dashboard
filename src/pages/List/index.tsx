@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import { uuid } from 'uuidv4';
+import { v4 as uuid_v4 } from 'uuid';
 
 import ContentHeader from '../../components/ContentHeader';
 import SelectInput from '../../components/SelectInput';
@@ -144,7 +144,7 @@ const List: React.FC<iRoutesParams> = ({ match }) => {
 
     const formattedData = filteredDate.map((item) => {
       return {
-        id: uuid(),
+        id: uuid_v4(),
         description: item.description,
         amountFormatted: formatCurrency(Number(item.amount)),
         frequency: item.frequency,
