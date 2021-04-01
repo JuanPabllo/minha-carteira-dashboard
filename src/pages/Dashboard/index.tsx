@@ -3,6 +3,10 @@ import React, { useState, useMemo } from 'react';
 import ContentHeader from '../../components/ContentHeader';
 import SelectInput from '../../components/SelectInput';
 import WalletBox from '../../components/WalletBox';
+import MessageImg from '../../components/MessageBox';
+
+import happyImg from '../../assets/happy.svg';
+import sadImg from '../../assets/sad.svg';
 
 import expenses from '../../repositories/expenses';
 import gains from '../../repositories/gains';
@@ -17,12 +21,6 @@ const Dashboard: React.FC = () => {
   const [yearSelected, setYearSelected] = useState<number>(
     new Date().getFullYear()
   );
-
-  const options = [
-    { value: 'Juan', label: 'Pablo' },
-    { value: 'Bina', label: 'Mo' },
-    { value: 'Davi', label: 'Lucas' },
-  ];
 
   const years = useMemo(() => {
     let uniqueYears: number[] = [];
@@ -108,6 +106,13 @@ const Dashboard: React.FC = () => {
           amount={4850.0}
           icon="arrowDown"
           footerLabel="atualizado com base nas entradas e saídas"
+        />
+
+        <MessageImg
+          title="Muito Bem!"
+          description="Sua carteira está positiva!"
+          icon={sadImg}
+          footerText="Continue assim. Considere investir o seu saldo."
         />
       </Content>
     </Container>
