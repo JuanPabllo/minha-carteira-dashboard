@@ -1,5 +1,5 @@
 import React from 'react';
-// import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
 import {
   Container,
@@ -18,7 +18,7 @@ interface IPieChartProps {
   }[];
 }
 
-const PieChart: React.FC<IPieChartProps> = ({ data }) => (
+const PieChartBox: React.FC<IPieChartProps> = ({ data }) => (
   <Container>
     <SideLeft>
       <h2>Relação</h2>
@@ -32,19 +32,18 @@ const PieChart: React.FC<IPieChartProps> = ({ data }) => (
       </LegendContainer>
     </SideLeft>
 
-    <SideRight></SideRight>
+    <SideRight>
+      <ResponsiveContainer>
+        <PieChart>
+          <Pie data={data} dataKey="percent">
+            {data.map((indicator) => (
+              <Cell key={indicator.name} fill={indicator.color} />
+            ))}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+    </SideRight>
   </Container>
 );
 
-export default PieChart;
-
-// eslint-disable-next-line no-lone-blocks
-{
-  /* <ResponsiveContainer>
-        <PieChart>
-          <Pie data={[]} labelLine={false} dataKey="percent">
-            {}
-          </Pie>
-        </PieChart>
-      </ResponsiveContainer> */
-}
+export default PieChartBox;
