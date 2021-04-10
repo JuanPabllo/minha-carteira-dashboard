@@ -9,43 +9,26 @@ import {
   SideRight,
 } from './styles';
 
-const PieChart: React.FC = () => (
+interface IPieChartProps {
+  data: {
+    name: string;
+    value: number;
+    percent: number;
+    color: string;
+  }[];
+}
+
+const PieChart: React.FC<IPieChartProps> = ({ data }) => (
   <Container>
     <SideLeft>
       <h2>Relação</h2>
       <LegendContainer>
-        <Legend color="#F7931B">
-          <div>5%</div>
-          <span>Entradas</span>
-        </Legend>
-        <Legend color="#E44C4E">
-          <div>95%</div>
-          <span>Saídas</span>
-        </Legend>
-        <Legend color="#F7931B">
-          <div>5%</div>
-          <span>Entradas</span>
-        </Legend>
-        <Legend color="#E44C4E">
-          <div>95%</div>
-          <span>Saídas</span>
-        </Legend>
-        <Legend color="#F7931B">
-          <div>5%</div>
-          <span>Entradas</span>
-        </Legend>
-        <Legend color="#E44C4E">
-          <div>95%</div>
-          <span>Saídas</span>
-        </Legend>
-        <Legend color="#F7931B">
-          <div>5%</div>
-          <span>Entradas</span>
-        </Legend>
-        <Legend color="#E44C4E">
-          <div>95%</div>
-          <span>Saídas</span>
-        </Legend>
+        {data.map((indicator) => (
+          <Legend key={indicator.name} color={indicator.color}>
+            <div>{indicator.percent}</div>
+            <span>{indicator.name}</span>
+          </Legend>
+        ))}
       </LegendContainer>
     </SideLeft>
 
