@@ -12,12 +12,11 @@ const MainHeader: React.FC = () => {
 
   return (
     <Container>
-      <Toggle />
-
       <Profile>
         <Welcome>Olá, {emoji}</Welcome>
         <UserName>Juan Pablo</UserName>
       </Profile>
+      <Toggle />
     </Container>
   );
 };
