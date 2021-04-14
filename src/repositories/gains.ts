@@ -65,7 +65,7 @@ export default [
   },
   {
     description: 'Salário',
-    amount: '2500.00',
+    amount: '1749.99',
     type: 'entrada',
     frequency: 'recorrente',
     date: '2021-07-10',
