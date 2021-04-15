@@ -4,7 +4,7 @@ import { Container, ToggleLabel, ToggleSelector } from './styles';
 
 const Toggle: React.FC = () => (
   <Container>
-    <ToggleLabel>Ligth</ToggleLabel>
+    <ToggleLabel>Light</ToggleLabel>
     <ToggleSelector
       checked
       uncheckedIcon={false}
