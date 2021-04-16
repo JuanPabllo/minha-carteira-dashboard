@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useAuth } from '../../hooks/useAuth';
 
 import logoImg from '../../assets/logo.svg';
 
@@ -8,6 +9,11 @@ import Button from '../../components/Button';
 import { Container, Logo, Form, FormTitle } from './styles';
 
 const SignIn: React.FC = () => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  const { signIn } = useAuth();
+
   return (
     <Container>
       <Logo>
@@ -15,11 +21,21 @@ const SignIn: React.FC = () => {
         <h2>Minha Carteira</h2>
       </Logo>
 
-      <Form onSubmit={() => {}}>
+      <Form onSubmit={() => signIn(email, password)}>
         <FormTitle>Entrar</FormTitle>
 
-        <Input placeholder="E-mail" type="email" required />
-        <Input placeholder="Senha" type="password" required />
+        <Input
+          placeholder="E-mail"
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <Input
+          placeholder="Senha"
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
         <Button type="submit">Acessar</Button>
       </Form>
