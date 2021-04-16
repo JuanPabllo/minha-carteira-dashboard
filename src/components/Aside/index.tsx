@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 
 import {
@@ -31,20 +32,26 @@ const Aside: React.FC = () => {
       </Header>
 
       <MenuContainer>
-        <MenuItemLink href="/">
-          <MdDashboard />
-          Dashboard
-        </MenuItemLink>
+        <Link style={{ textDecoration: 'none' }} to="/">
+          <MenuItemLink>
+            <MdDashboard />
+            Dashboard
+          </MenuItemLink>
+        </Link>
 
-        <MenuItemLink href="/list/entry-balance">
-          <MdArrowUpward />
-          Entradas
-        </MenuItemLink>
+        <Link style={{ textDecoration: 'none' }} to="/list/entry-balance">
+          <MenuItemLink>
+            <MdArrowUpward />
+            Entradas
+          </MenuItemLink>
+        </Link>
 
-        <MenuItemLink href="/list/exit-balance">
-          <MdArrowDownward />
-          Saídas
-        </MenuItemLink>
+        <Link style={{ textDecoration: 'none' }} to="/list/exit-balance">
+          <MenuItemLink>
+            <MdArrowDownward />
+            Saídas
+          </MenuItemLink>
+        </Link>
 
         <MenuItemButton onClick={signOut}>
           <MdExitToApp />
