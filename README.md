@@ -67,4 +67,4 @@ $ npm run start
 
 ### License 📝
 
-This project is under the MIT license. See the [LICENSE](#) for more information.
+This project is under the MIT license. See the [LICENSE](https://github.com/JuanPabllo/minha-carteira-dashboard/blob/master/LICENSE) for more information.
