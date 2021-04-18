@@ -13,8 +13,8 @@
 
 Access the application:
 
-Email: juan@email.com
-Password: 123
+* Email: juan@email.com
+* Password: 123
 - [Here](https://minhacarteiradash.netlify.app)
 
 colocar imgs aqui
