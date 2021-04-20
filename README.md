@@ -13,11 +13,15 @@
 
 Access the application:
 
-* Email: juan@email.com
-* Password: 123
-- [Here](https://minhacarteiradash.netlify.app)
+- Email: juan@email.com
+- Password: 123
 
-colocar imgs aqui
+* [Here](https://minhacarteiradash.netlify.app)
+
+<img width="300" src=".github/img0.png" />
+<img width="300" src=".github/img1.png" />
+<img width="300" src=".github/img2.png" />
+<img width="300" src=".github/img3.png" />
 
 ### 🛠 Technology
 
