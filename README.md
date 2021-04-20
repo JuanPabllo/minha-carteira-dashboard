@@ -18,10 +18,10 @@ Access the application:
 
 * [Here](https://minhacarteiradash.netlify.app)
 
-<img width="300" src=".github/img0.png" />
-<img width="300" src=".github/img1.png" />
-<img width="300" src=".github/img2.png" />
-<img width="300" src=".github/img3.png" />
+<img width="500" src=".github/img0.png" />
+<img width="500" src=".github/img1.png" />
+<img width="500" src=".github/img2.png" />
+<img width="500" src=".github/img3.png" />
 
 ### 🛠 Technology
 
